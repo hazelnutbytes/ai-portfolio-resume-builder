@@ -6,6 +6,7 @@
 **Institution:** ITM Skills University, Navi Mumbai, Maharashtra  
 **Academic Standing:** CGPA 9.3 / 10.0  
 **Repository:** [https://github.com/hazelnutbytes/ai-portfolio-resume-builder](https://github.com/hazelnutbytes/ai-portfolio-resume-builder)  
+**Live Deployed Application:** [https://ai-portfolio-resume-builder.onrender.com](https://ai-portfolio-resume-builder.onrender.com)  
 **Synchronized Google Sheet:** [Live Google Sheet](https://docs.google.com/spreadsheets/d/1HSH4qsBJLFfA4AwDSJsxq3Z8pKTmyz37H-8nJbWabK0/edit)  
 
 ---

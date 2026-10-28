@@ -13,6 +13,7 @@ The same master portfolio dynamically generates distinctly customized resumes fo
 - **Institution:** ITM Skills University, Navi Mumbai, Maharashtra, India
 - **Cumulative CGPA:** **9.3 / 10.0** (Top Academic Standing)
 - **Profiles:** [LinkedIn](https://www.linkedin.com/in/hazel-lakshmana-21b566379/) • [GitHub](https://github.com/hazelnutbytes)
+- **Live Deployed Application:** [https://ai-portfolio-resume-builder.onrender.com](https://ai-portfolio-resume-builder.onrender.com)
 - **Live Google Sheet:** [View Synchronized Portfolio on Google Sheets](https://docs.google.com/spreadsheets/d/1HSH4qsBJLFfA4AwDSJsxq3Z8pKTmyz37H-8nJbWabK0/edit)
 
 ---
