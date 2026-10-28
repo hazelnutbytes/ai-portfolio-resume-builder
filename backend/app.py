@@ -62,6 +62,18 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Ensure DB is initialized on boot
 init_db()
 
+# Auto-seed if database has no portfolios yet (e.g. freshly deployed in cloud)
+try:
+    from database.db import get_connection
+    _conn = get_connection()
+    _count = _conn.execute("SELECT COUNT(*) FROM portfolios").fetchone()[0]
+    _conn.close()
+    if _count == 0:
+        logger.info("Empty database detected on boot. Seeding Hazel Lakshmana profile...")
+        seed_database(reset=False)
+except Exception as _e:
+    logger.warning(f"Auto-seed check encountered non-fatal error: {_e}")
+
 
 # -------------------------------------------------------------
 # Error Handlers
@@ -590,6 +602,31 @@ def get_sheets_sync_logs():
     limit = int(request.args.get("limit", 10))
     logs = get_recent_sync_logs(portfolio_id=1, limit=limit)
     return jsonify(logs)
+
+
+FRONTEND_DIST_DIR = (BACKEND_DIR.parent / "frontend" / "dist").resolve()
+
+
+# -------------------------------------------------------------
+# Frontend Static Asset & SPA Serving (Production)
+# -------------------------------------------------------------
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve_frontend(path):
+    if path.startswith("api"):
+        return jsonify({"error": "Not Found", "message": f"API endpoint '/{path}' not found"}), 404
+    if FRONTEND_DIST_DIR.exists():
+        requested_file = FRONTEND_DIST_DIR / path
+        if path and requested_file.exists() and not requested_file.is_dir():
+            return send_file(str(requested_file))
+        index_file = FRONTEND_DIST_DIR / "index.html"
+        if index_file.exists():
+            return send_file(str(index_file))
+    return jsonify({
+        "status": "ready",
+        "app_name": "AI-Powered Portfolio Manager & Dynamic Resume Builder",
+        "message": "Backend API is online. Build frontend with 'npm run build' inside frontend/ to serve the UI."
+    }), 200
 
 
 # -------------------------------------------------------------

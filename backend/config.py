@@ -13,7 +13,7 @@ load_dotenv(BACKEND_DIR / ".env")
 
 class Config:
     FLASK_ENV = os.getenv("FLASK_ENV", "development")
-    FLASK_PORT = int(os.getenv("FLASK_PORT", "5001"))
+    FLASK_PORT = int(os.getenv("PORT", os.getenv("FLASK_PORT", "5001")))
 
     # Database configuration
     _db_env = os.getenv("DATABASE_PATH", "backend/instance/portfolio.db")

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ai-portfolio-resume-builder
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "cd backend && gunicorn app:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GOOGLE_SPREADSHEET_ID
+        sync: false
