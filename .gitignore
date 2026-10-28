@@ -1,0 +1,36 @@
+# Environment & Secrets
+.env
+backend/.env
+frontend/.env
+*.pem
+*.json.key
+service_account.json
+credentials.json
+backend/credentials.json
+backend/service_account.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+*.egg-info/
+dist/
+build/
+
+# Database & Generated Files
+*.db
+*.sqlite
+*.sqlite3
+backend/instance/
+backend/generated_resumes/
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.DS_Store
+*.log
